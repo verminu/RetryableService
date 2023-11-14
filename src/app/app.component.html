@@ -1,0 +1,69 @@
+<app-retry-service url="http://localhost:3000/valid-data"
+                   description="The API is ready and returns valid data: {ready: true}"
+></app-retry-service>
+
+<app-retry-service url="http://localhost:3000/data-not-ready"
+                   description="The API response is not ready yet. It responds with 404 and {ready: false}.
+                                The service will automatically attempt other retries with the default options."
+></app-retry-service>
+
+<app-retry-service url="http://localhost:3000/data-not-ready"
+                   description="The API response is not ready yet. It responds with 404 and {ready: false}.
+                                The service will automatically attempt other retries with the custom options."
+                   [retryOptions]="{retries: 4, interval: 2000, strategy: 'exponential'}"
+></app-retry-service>
+
+<app-retry-service url="http://localhost:3000/data-not-ready"
+                   description="The API response is not ready yet. It responds with 404 and {ready: false}.
+                                The service will automatically attempt other retries but there will be no live feedback
+                                about when the next requests will be made."
+                   [retryOptions]="{liveUpdates: false}"
+></app-retry-service>
+
+<app-retry-service url="http://localhost:3000/data-not-ready"
+                   description="The API response is not ready yet (it responds with 404 and {ready: false}.
+                                The service will automatically attempt other retries but there will be no feedback at all."
+                   [retryOptions]="{noUpdates: true}"
+></app-retry-service>
+
+<app-retry-service url="http://localhost:3000/data-not-ready-then-ready"
+                   description="The API response is not ready yet, but it will be 10 seconds after the initial request."
+                   [retryOptions]="{retries: 3, interval: 2000, strategy: 'exponential'}"
+></app-retry-service>
+
+<app-retry-service url="http://localhost:3000/invalid-format-404"
+                   description="The API responds with 404 status and the response has an invalid format.
+                                By default the service considers this a server error and will not attempt other retries."
+></app-retry-service>
+
+<app-retry-service url="http://localhost:3000/invalid-format-404"
+                   description="The API responds with 404 status and the response has an invalid format.
+                                The service is set to attempt other retries."
+                   [retryOptions]="{retryOnServerFailure: true}"
+></app-retry-service>
+
+<app-retry-service url="http://localhost:3000/invalid-format-200"
+                   description="The API responds with 200 status code, but the response has an invalid format.
+                                By default the service considers this an unexpected format error and will not attempt other retries."
+></app-retry-service>
+
+<app-retry-service url="http://localhost:3000/invalid-format-200"
+                   description="The API responds with 200 status code, but the response has an invalid format.
+                                The service is set to attempt other retries."
+                   [retryOptions]="{retryOnUnexpectedFormat: true}"
+></app-retry-service>
+
+<app-retry-service url="http://localhost:3000/server-error-500"
+                   description="The API responds with 500 status. By default the service considers this a server error
+                                and will not attempt other retries."
+></app-retry-service>
+
+<app-retry-service url="http://localhost:3000/server-error-500"
+                   description="The API responds with 500 status. The service is set to attempt other retries."
+                   [retryOptions]="{retryOnServerFailure: true}"
+></app-retry-service>
+
+
+<app-retry-service url="http://invalid-url"
+                   description="The URL is invalid. The service will consider a server error and will not attempt other retries."
+></app-retry-service>

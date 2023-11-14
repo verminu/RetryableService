@@ -1,0 +1,22 @@
+<mat-card class="container">
+  <mat-card-header>
+    <mat-card-title>{{url}}</mat-card-title>
+    <mat-card-subtitle *ngIf="description">{{description}}</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <p *ngIf="retryOptions">Custom retry options: {{retryOptions | json}}</p>
+    <div class="button-group">
+      <button mat-raised-button color="primary" (click)="loadData()" [disabled]="operationInProgress">Load data</button>
+      <button mat-raised-button color="warn" (click)="stopLoading()" *ngIf="operationInProgress">Stop</button>
+      <mat-progress-spinner *ngIf="requestLoading" mode="indeterminate" diameter="20"></mat-progress-spinner>
+    </div>
+
+    <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+    <p *ngIf="data" class="data-content">{{ data | json }}</p>
+
+  </mat-card-content>
+
+  <mat-progress-bar *ngIf="operationInProgress" mode="indeterminate"></mat-progress-bar>
+</mat-card>

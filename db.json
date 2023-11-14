@@ -1,0 +1,10 @@
+{
+  "weather": {
+    "ready": true,
+    "data": 231
+  },
+  "exchange-rate": {
+    "ready": false,
+    "data": 2.342
+  }
+}

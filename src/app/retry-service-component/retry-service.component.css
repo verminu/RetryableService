@@ -1,0 +1,31 @@
+.container {
+  min-height: 14rem;
+  box-shadow: 1px 1px 9px grey;
+  border-radius: 10px;
+  margin: 2rem;
+  padding: 1rem;
+  position: relative;
+  overflow: auto;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.data-content {
+  margin-top: 1rem;
+}
+
+.error-message {
+  margin-top: 1rem;
+  color: #ad0000;
+}
+
+mat-progress-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
